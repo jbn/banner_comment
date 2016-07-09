@@ -2,3 +2,6 @@ build
 *.pyc
 MANIFEST
 dist
+banner_comment.iml
+banner_comment.egg-info
+.idea

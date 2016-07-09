@@ -1,0 +1,13 @@
+language: python
+python:
+  - "2.7"
+  - "3.3"
+  - "3.4"
+  - "3.5"
+  - "3.5-dev" # 3.5 development branch
+  - "nightly" # currently points to 3.6-dev
+before_install:
+  - sudo apt-get install -y figlet
+install: "pip install coveralls nose"
+script: coverage run --source=banner_comment setup.py nosetests
+after_success: coveralls

@@ -1,7 +1,8 @@
+from __future__ import print_function
 import subprocess
 
 
-def banner_comment(text, font='ogre', width=79, 
+def banner_comment(text, font='standard', width=79, print_to_stdout=True,
                    border_top=True, border_bottom=True, border_right=True):
     """
     Generate a ASCII Banner comment for separating code blocks via FIGlet.
@@ -9,9 +10,12 @@ def banner_comment(text, font='ogre', width=79,
     :param text: The text to banner-ize.
     :param font: the figlet font
     :param width: the column width of the banner
+    :param print_to_stdout: if True (default) print the banner comment to
+        stdout. Otherwise, print nothing.
     :param border_top: print a octothorp border on the top
     :param border_bottom: print a octothorp border on the bottom
     :param border_right: print a octothorp border on the right
+    :return: the banner_comment, if print_to_stdout is False
     """
     cmd = ['figlet', '-c', '-w', str(width), '-f', font, text]
     s = subprocess.check_output(cmd).decode()
@@ -28,4 +32,8 @@ def banner_comment(text, font='ogre', width=79,
         if border_bottom:
             lines.append(border)
 
-    return "\n".join(lines) + "\n"
+    banner_str = "\n".join(lines) + "\n"
+    if print_to_stdout:
+        print(banner_str, end='')
+    else:
+        return banner_str
