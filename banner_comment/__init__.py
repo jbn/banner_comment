@@ -37,3 +37,23 @@ def banner_comment(text, font='standard', width=79, print_to_stdout=True,
         print(banner_str, end='')
     else:
         return banner_str
+
+
+def cli():
+    from argparse import ArgumentParser
+
+    parser = ArgumentParser(description="Make Bannerized Code Comments")
+    parser.add_argument('text', metavar='COMMENT', help='the comment string')
+    parser.add_argument('--font', metavar='FONT', required=False,
+                        default='standard')
+
+    border_ks = ['border_top', 'border_bottom', 'border_right']
+    for k in border_ks:
+        parser.add_argument("--no-" + k.replace("_", "-"),
+                            dest=k, action='store_false')
+
+    banner_comment(**vars(parser.parse_args()))
+
+
+if __name__ == '__main__':
+    cli()

@@ -28,6 +28,12 @@ Prints:
 ###############################################################################
 ```
 
+The package also installs a command line entry point, allowing:
+
+```bash
+banner_comment "hello"
+```
+
 # Installation
 
 This (one function) package just wraps [figlet](http://www.figlet.org/). You need to install figlet first. It exists on lots of package managers. E.g. 
